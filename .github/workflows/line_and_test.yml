@@ -22,14 +22,13 @@ jobs:
     strategy:
       matrix:
         node:
-          - 14
-          - 16
           - 18
+          - 20
     steps:
       - uses: actions/setup-node@v3
         with:
           node-version: '${{ matrix.node }}'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: 'Cache node_modules'
         uses: actions/cache@v3
         with:
