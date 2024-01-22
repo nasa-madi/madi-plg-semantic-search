@@ -23,10 +23,11 @@ __Options:__
 - `allowedRpcVerbs` (**optional**. default: `any`) - Accepts a string or an array of strings.  Defaults to fully open, allowing any verb.  Setting to `[]` will disallow any verb. In order to use the `x-service-method` automatic call, the custom method of the service **must** be named exactly the same as the verb sent.
 
 
+### Using this Template
 
-### Using Verbs with ID
-
-
+```bash
+gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-search
+```
 
 ### Extending an existing Service
 

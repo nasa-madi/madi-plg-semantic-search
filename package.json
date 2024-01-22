@@ -8,25 +8,27 @@
     "lib": "lib",
     "test": "test"
   },
+  "dependencies": {
+    "@types/feathersjs__feathers": "^3.1.14"
+  },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.5",
     "@babel/preset-env": "^7.21.5",
     "@babel/register": "^7.21.0",
-    "@release-it/conventional-changelog": "^5.1.1",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "conventional-changelog-angular": "^5.0.13",
-    "cors": "^2.8.5",
+    "conventional-changelog-angular": "^7.0.0",
     "eslint": "^8.39.0",
     "eslint-config-standard": "^17.1.0",
     "nock": "^13.5.0",
     "nyc": "^15.1.0",
-    "release-it": "^15.10.2",
+    "release-it": "^17.0.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
@@ -60,8 +62,5 @@
   "bugs": {
     "url": "https://github.com/nasa-madi/madi-plg-semantic-search/issues"
   },
-  "homepage": "https://github.com/nasa-madi/madi-plg-semantic-search#readme",
-  "dependencies": {
-    "@types/feathersjs__feathers": "^3.1.14"
-  }
+  "homepage": "https://github.com/nasa-madi/madi-plg-semantic-search#readme"
 }
