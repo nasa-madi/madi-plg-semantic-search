@@ -25,6 +25,12 @@ __Options:__
 
 ### Using this Template
 
+```
+git checkout -B main; git branch --set-upstream-to=origin/main;
+git checkout -B beta; git branch --set-upstream-to=origin/beta;
+git checkout -B alpha; git branch --set-upstream-to=origin/alpha;
+```
+
 ```bash
 gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-search
 ```

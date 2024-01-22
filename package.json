@@ -1,5 +1,5 @@
 {
-  "name": "madi-semantic-scholar",
+  "name": "madi-plg-semantic-scholar",
   "version": "0.0.0-releaseit",
   "description": "MADI AI plugin for Semantic Scholar search",
   "main": "lib",
