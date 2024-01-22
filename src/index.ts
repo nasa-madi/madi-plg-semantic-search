@@ -1,109 +1,96 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Service, Tool, SearchSemanticScholarParams, SemanticScholarResult, PluginOptions, RunOptions } from './types';
 
-import { Service } from '@feathersjs/feathers';
+/**
+   * Construct the URL for the Semantic Scholar API request.
+   * @param {SearchSemanticScholarParams} params - The search parameters.
+   * @returns {string} - The constructed URL.
+   */
+export const _constructURL = (params: SearchSemanticScholarParams): string => {
+  const {
+    query,
+    limit = 100,
+    publicationDateOrYear,
+    year,
+    venue,
+    fieldsOfStudy,
+    offset = 0
+  } = params;
 
-export interface User {
-  email: string;
-  googleId: string;
-}
+  // List of fields to retrieve from the search
+  const fields = [
+    'paperId',
+    'url',
+    'title',
+    'venue',
+    'publicationVenue',
+    'year',
+    'authors',
+    'abstract',
+    'publicationDate',
+    'tldr',
+    'fieldsOfStudy',
+    'referenceCount',
+    'citationCount',
+    'influentialCitationCount',
+    'isOpenAccess',
+    'isPublisherLicensed'
+  ].join(',');
 
-export interface Message {
-  role: string;
-  content: string;
-}
+  // Construct the base URL
+  let url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(
+    query
+  )}&fields=${fields}&limit=${limit}&offset=${offset}`;
 
-export interface ToolObject {
-  description: string;
-  name: string;
-  parameters: object;
-}
+  // Append additional parameters if provided
+  if (publicationDateOrYear) url += `&publicationDate=${encodeURIComponent(publicationDateOrYear)}`;
+  if (year) url += `&year=${encodeURIComponent(year)}`;
+  if (venue) url += `&venue=${encodeURIComponent(venue)}`;
+  if (fieldsOfStudy) {
+    const encodedFieldsOfStudy = Array.isArray(fieldsOfStudy)
+      ? encodeURIComponent(fieldsOfStudy.join(','))
+      : encodeURIComponent(fieldsOfStudy);
+    url += `&fieldsOfStudy=${encodedFieldsOfStudy}`;
+  }
 
-export interface Tool {
-  type: string;
-  function: ToolObject;
-  plugin?: string;
-  display?: string;
-}
+  return url;
+};
 
-interface SearchSemanticScholarParams {
-  query: string;
-  limit?: number;
-  publicationDateOrYear?: string;
-  year?: string;
-  venue?: string;
-  fieldsOfStudy?: string;
-  offset?: number;
-}
-
-interface SemanticScholarResult {
-  paperId: string;
-  url: string;
-  title: string;
-  venue: string;
-  publicationVenue: string;
-  year: number;
-  authors: string[];
-  abstract: string;
-  publicationDate: string;
-  tldr: string;
-}
-
-export interface PluginOptions {
-  documents: Service<any>;
-  chunks: Service<any>;
-  uploads: Service<any>;
-}
-export interface Data extends SearchSemanticScholarParams { }
-
-export interface RunOptions {
-  user: User;
-  messages: Message[];
-  persona: Message;
-  data: Data;
-}
-
+/**
+ * Class representing the SemanticScholar plugin.
+ */
 export class SemanticScholar {
-  documents: Service<any> | undefined;
-  chunks: Service<any> | undefined;
-  uploads: Service<any> | undefined;
+  documents: Service | undefined;
+  chunks: Service | undefined;
+  uploads: Service | undefined;
 
+  /**
+   * Create a SemanticScholar plugin.
+   * @param {PluginOptions} [options] - The plugin options.
+   */
   constructor (options?: PluginOptions) {
     this.documents = options?.documents;
     this.chunks = options?.chunks;
     this.uploads = options?.uploads;
   }
 
+  private constructURL (params:SearchSemanticScholarParams): string {
+    return _constructURL(params);
+  }
+
+  /**
+   * Run the Semantic Scholar search operation.
+   * @param {RunOptions} options - The options for the search operation.
+   * @returns {Promise<string>} - The search results in string format.
+   */
   async run (options: RunOptions): Promise<string> {
-    const { query, limit = 100, publicationDateOrYear, year, venue, fieldsOfStudy, offset = 0 }: Data = options.data || {};
+    // Destructure the search parameters or set defaults
+    const params: SearchSemanticScholarParams = options.data || {};
 
-    const fields = [
-      'paperId',
-      'url',
-      'title',
-      'venue',
-      'publicationVenue',
-      'year',
-      'authors',
-      'abstract',
-      'publicationDate',
-      'tldr',
-      'fieldsOfStudy',
-      'referenceCount',
-      'citationCount',
-      'influentialCitationCount',
-      'isOpenAccess',
-      'isPublisherLicensed'
-    ].join(',');
+    // Construct the URL using the separate function
+    const url = this.constructURL(params);
 
-    let url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(
-      query
-    )}&fields=${fields}&limit=${limit}&offset=${offset}`;
-
-    if (publicationDateOrYear) url += `&publicationDate=${encodeURIComponent(publicationDateOrYear)}`;
-    if (year) url += `&year=${encodeURIComponent(year)}`;
-    if (venue) url += `&venue=${encodeURIComponent(venue)}`;
-    if (fieldsOfStudy) url += `&fieldsOfStudy=${encodeURIComponent(fieldsOfStudy.join(','))}`;
-
+    // Execute the API request and handle the response
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -116,15 +103,20 @@ export class SemanticScholar {
     }
   }
 
+  /**
+   * Describe the tool for integration with other systems or UI.
+   * @returns {Tool} - The tool description object.
+   */
   describe (): Tool {
+    // Return the static description of the Semantic Scholar search function
     return searchSemanticScholarDesc;
   }
 }
-
+// The static description object for the Semantic Scholar search tool.
 export const searchSemanticScholarDesc: Tool = {
   type: 'function',
-  plugin: 'Semantic Scholar',
-  display: 'Search Semantic Scholar',
+  plugin: 'Semantic Scholar', // Identifier for the plugin
+  display: 'Search Semantic Scholar', // Display name for the UI
   function: {
     name: 'searchSemanticScholar',
     description: 'Search for academic papers from Semantic Scholar.',
@@ -151,7 +143,8 @@ export const searchSemanticScholarDesc: Tool = {
         },
         venue: {
           type: 'string',
-          description: 'Restrict results by venue, including ISO4 abbreviations. Use a comma-separated list to include papers from more than one venue. Example: "Nature,Radiology".'
+          description:
+            'Restrict results by venue, including ISO4 abbreviations. Use a comma-separated list to include papers from more than one venue. Example: "Nature,Radiology".'
         },
         fieldsOfStudy: {
           type: 'string',

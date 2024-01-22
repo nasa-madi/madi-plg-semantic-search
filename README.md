@@ -1,4 +1,6 @@
 # madi-plg-semantic-scholar
+This plugin connects Semantic Scholar's search capabiltity into the MADI AI system.  
+
                     
 [![NPM](https://img.shields.io/npm/l/madi-plg-semantic-scholar)](https://github.com/nasa-madi/madi-plg-semantic-scholar/blob/main/LICENSE) 
 
@@ -10,7 +12,7 @@
 
 <!-- [![Download Status](https://img.shields.io/npm/dm/madi-plg-semantic-scholar.svg)](https://www.npmjs.com/package/madi-plg-semantic-scholar) -->
 
-This library is a FeathersJS middleware to allow simple Remote Procedure Calls (RPCs) to interact with [Feathers Services](https://feathersjs.com/guides/basics/services.html) and [custom methods](https://feathersjs.com/api/services.html#custom-methods). 
+
 
 
 
@@ -38,12 +40,6 @@ gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-scholar
 ### Extending an existing Service
 
 
-
-
-
 ## Contributing
 Please see https://github.com/nasa-madi/madi-plg-semantic-scholar/blob/main/.github/contributing.md
- 
-## Credit
-Inspired by work by Ben Zelinski.
 
