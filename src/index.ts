@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Service } from 'feathersjs__feathers';
+import { Service } from '@feathersjs/feathers';
 
 export interface User {
   email: string;

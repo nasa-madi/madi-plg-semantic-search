@@ -1,14 +1,14 @@
-# madi-plg-semantic-search
+# madi-plg-semantic-scholar
                     
-[![NPM](https://img.shields.io/npm/l/madi-plg-semantic-search)](https://github.com/nasa-madi/madi-plg-semantic-search/blob/main/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/madi-plg-semantic-scholar)](https://github.com/nasa-madi/madi-plg-semantic-scholar/blob/main/LICENSE) 
 
-[![npm](https://img.shields.io/npm/v/madi-plg-semantic-search?label=latest)](https://www.npmjs.com/package/madi-plg-semantic-search)
+[![npm](https://img.shields.io/npm/v/madi-plg-semantic-scholar?label=latest)](https://www.npmjs.com/package/madi-plg-semantic-scholar)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nasa-madi/madi-plg-semantic-search/npm-publish.yml?branch=main)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nasa-madi/madi-plg-semantic-scholar/npm-publish.yml?branch=main)
 
-[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/NPM/madi-plg-semantic-search)]()
+[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/NPM/madi-plg-semantic-scholar)]()
 
-<!-- [![Download Status](https://img.shields.io/npm/dm/madi-plg-semantic-search.svg)](https://www.npmjs.com/package/madi-plg-semantic-search) -->
+<!-- [![Download Status](https://img.shields.io/npm/dm/madi-plg-semantic-scholar.svg)](https://www.npmjs.com/package/madi-plg-semantic-scholar) -->
 
 This library is a FeathersJS middleware to allow simple Remote Procedure Calls (RPCs) to interact with [Feathers Services](https://feathersjs.com/guides/basics/services.html) and [custom methods](https://feathersjs.com/api/services.html#custom-methods). 
 
@@ -32,7 +32,7 @@ git checkout -B alpha; git branch --set-upstream-to=origin/alpha;
 ```
 
 ```bash
-gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-search
+gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-scholar
 ```
 
 ### Extending an existing Service
@@ -42,7 +42,7 @@ gh secret set NPM_TOKEN --repo nasa-madi/madi-plg-semantic-search
 
 
 ## Contributing
-Please see https://github.com/nasa-madi/madi-plg-semantic-search/blob/main/.github/contributing.md
+Please see https://github.com/nasa-madi/madi-plg-semantic-scholar/blob/main/.github/contributing.md
  
 ## Credit
 Inspired by work by Ben Zelinski.

@@ -7,7 +7,7 @@ Thank you for contributing to this MADI plugin! :heart: :tada:
 
 Before creating an issue please make sure you have checked out the docs. You might want to also try searching Github. It's pretty likely someone has already asked a similar question.
 
-Issues can be reported in the [issue tracker](https://github.com/nasa-madi/madi-plg-semantic-search/issues). Since MADI combines many modules it can be hard for us to assess the root cause without knowing which modules are being used and what your configuration looks like, so **it helps us immensely if you can link to a simple example that reproduces your issue**.
+Issues can be reported in the [issue tracker](https://github.com/nasa-madi/madi-plg-semantic-scholar/issues). Since MADI combines many modules it can be hard for us to assess the root cause without knowing which modules are being used and what your configuration looks like, so **it helps us immensely if you can link to a simple example that reproduces your issue**.
 
 ## Report a Security Concern
 
@@ -34,7 +34,7 @@ Tests are located in the `test/` folder and can be run using the `npm run mocha`
 
 ### Documentation
 
-Documentation is contained in Markdown files in the [docs](https://github.com/nasa-madi/madi-plg-semantic-search/docs) repository. To change the documentation submit a pull request to that repo, referencing any other PR if applicable, and the docs will be updated with the next release.
+Documentation is contained in Markdown files in the [docs](https://github.com/nasa-madi/madi-plg-semantic-scholar/docs) repository. To change the documentation submit a pull request to that repo, referencing any other PR if applicable, and the docs will be updated with the next release.
 
 ## Contributor Code of Conduct
 

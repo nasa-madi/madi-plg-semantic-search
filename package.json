@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nasa-madi/madi-plg-semantic-search.git"
+    "url": "git+https://github.com/nasa-madi/madi-plg-semantic-scholar.git"
   },
   "keywords": [
     "madi",
@@ -60,7 +60,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nasa-madi/madi-plg-semantic-search/issues"
+    "url": "https://github.com/nasa-madi/madi-plg-semantic-scholar/issues"
   },
-  "homepage": "https://github.com/nasa-madi/madi-plg-semantic-search#readme"
+  "homepage": "https://github.com/nasa-madi/madi-plg-semantic-scholar#readme"
 }
